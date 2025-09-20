@@ -1,0 +1,32 @@
+# Git commands used
+
+git init
+git add .
+git commit -m "Initial commit"
+
+git checkout -b feature-branch
+echo 'print("Feature branch change")' >> script1.py
+git add script1.py
+git commit -m "Update script1 in feature branch"
+git checkout main
+git merge feature-branch
+
+git checkout -b rebase-branch
+echo 'print("Another feature")' >> script2.py
+git add script2.py
+git commit -m "Update script2 in rebase branch"
+git checkout main
+echo "# README" > README.md
+git add README.md
+git commit -m "Add README"
+git checkout rebase-branch
+git rebase main
+
+echo 'print("Temporary changes")' >> script1.py
+git stash
+git stash apply
+
+git push origin main
+git push origin feature-branch
+git push origin rebase-branch
+
